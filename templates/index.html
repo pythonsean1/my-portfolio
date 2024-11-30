@@ -52,9 +52,6 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <p>Aspiring Python developer</p>
     <img src="{{ url_for('static', filename='spike.jpg') }}" class="w3-image w3-hide-large w3-hide-small w3-round" style="display:block;width:60%;margin:auto;">
     <img src="{{ url_for('static', filename='spike.jpg') }}" class="w3-image w3-hide-large w3-hide-medium w3-round" width="1000" height="1333">
-    <button class="w3-button w3-light-grey w3-padding-large w3-margin-top">
-      <i class="fa fa-download"></i> Download Resume
-    </button>
   </header>
 
   <!-- Portfolio Section -->
@@ -125,9 +122,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
       </div>
     </div>
 
-    <button class="w3-button w3-light-grey w3-padding-large w3-section">
-      <i class="fa fa-download"></i> Download Resume
-    </button>
+   
 
     <!-- Testimonials -->
     <h3 class="w3-padding-24">Favourite Celebs</h3>
@@ -144,43 +139,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <p>Tom Holland was the lead in the Home series which is my favourite Marvel trilogy</p><br>
     
     <!-- Grid for pricing tables -->
-    <h3 class="w3-padding-16">My Price</h3>
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-half w3-margin-bottom">
-        <ul class="w3-ul w3-center w3-card w3-hover-shadow">
-          <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
-          <li class="w3-padding-16">Web Design</li>
-          <li class="w3-padding-16">Photography</li>
-          <li class="w3-padding-16">5GB Storage</li>
-          <li class="w3-padding-16">Mail Support</li>
-          <li class="w3-padding-16">
-            <h2>$ 10</h2>
-            <span class="w3-opacity">per month</span>
-          </li>
-          <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
-          </li>
-        </ul>
-      </div>
-
-      <div class="w3-half">
-        <ul class="w3-ul w3-center w3-card w3-hover-shadow">
-          <li class="w3-black w3-xlarge w3-padding-32">Pro</li>
-          <li class="w3-padding-16">Web Design</li>
-          <li class="w3-padding-16">Photography</li>
-          <li class="w3-padding-16">50GB Storage</li>
-          <li class="w3-padding-16">Endless Support</li>
-          <li class="w3-padding-16">
-            <h2>$ 25</h2>
-            <span class="w3-opacity">per month</span>
-          </li>
-          <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
-          </li>
-        </ul>
-      </div>
-    <!-- End Grid/Pricing tables -->
-    </div>
+    
     
   <!-- End About Section -->
   </div>
@@ -191,23 +150,147 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <hr class="w3-opacity">
 
     <div class="w3-section">
-      <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Chicago, US</p>
-      <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +00 151515</p>
-      <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
+      <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> London, UK</p>
+      <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: seangyamfi01@gmail.com</p>
     </div>
     
     <!-- Image of location/map -->
     <img src="{{ url_for('static', filename='Quiz-850x354.png') }}" class="w3-image w3-greyscale" style="width:100%;margin:32px 0">
    
-    <p>Lets get in touch. Send me a message:</p>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required name="Email"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message" required name="Message"></p>
-      <p>
+    <p>Complete the quiz below:</p>
+    <form action="/quiz" method="post" >
+        <label for="question1"><strong>1: What is my favourite colour?</strong></label>
+        <select id="question1" class="w3-input w3-padding-16 w3-border" name="question1" required>
+            <option value="">Please select an option</option>
+            <option value="blue">Blue</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="orange">Orange</option>
+        </select>
+        {% if question1_answer %}
+            <p>{{ question1_answer }}</p>
+        {% endif %}
+        <br>
+
+        <label for="question2"><strong>2: What is my favourite food?</strong></label>
+        <select id="question2" class="w3-input w3-padding-16 w3-border" name="question2" required>
+            <option value="">Please select an option</option>
+            <option value="pizza">Pizza</option>
+            <option value="cheeseburger">Cheeseburger</option>
+            <option value="hotdog">Hotdog</option>
+            <option value="chikensandwich">Chicken Sandwich</option>
+
+        </select>
+        {% if answer2 %}
+            <p>{{ answer2 }}</p>
+        {% endif %}
+        <br>
+
+        <label for="question3"><strong>3: What is my dream holiday destination?</strong></label>
+        <select id="question3" class="w3-input w3-padding-16 w3-border" name="question3" required>
+            <option value="">Please select an option</option>
+            <option value="japan">Japan</option>
+            <option value="france">France</option>
+            <option value="usa">USA</option>
+            <option value="china">China</option>  
+        </select>
+        {% if answer3 %}
+            <p>{{ answer3 }}</p>
+        {% endif %}
+        <br>
+
+        <label for="question4"><strong>4: What is my favourite sport?</strong></label>
+        <select id="question4" class="w3-input w3-padding-16 w3-border" name="question4" required>
+            <option value="">Please select an option</option>
+            <option value="basketball">Basketball</option>
+            <option value="tenis">Tenis</option>
+            <option value="football">Football</option>
+            <option value="volleyball">Volleyball</option>
+        </select>
+        {% if answer4 %}
+            <p>{{ answer4 }}</p>
+        {% endif %}
+        <br>
+
+        <label for="question5"><strong>5: What is my favourite game?</strong></label>
+        <select id="question5" class="w3-input w3-padding-16 w3-border" name="question5" required>
+            <option value="">Please select an option</option>
+            <option value="injustice">Injustice</option>
+            <option value="fortnite">Fortnite</option>
+            <option value="mortalkombat">Mortal Kombat</option>
+            <option value="pokemon">Pokemon</option>
+        </select>
+        {% if answer5 %}
+          <p>{{ answer5 }}</p>
+        {% endif %}
+        <br>
+
+        <label for="question6"><strong>6: What city do I live in?</strong></label>
+        <select id="question6" class="w3-input w3-padding-16 w3-border" name="question6" required>
+            <option value="">Please select an option</option>
+            <option value="manchester">Manchester</option>
+            <option value="london">London</option>
+            <option value="glasglow">Glasglow</option>
+            <option value="liverpool">Liverpool</option>
+        </select>
+        {% if answer6 %}
+            <p>{{ answer6 }}</p>
+        {% endif %}
+        <br>
+
+        <label for="question7"><strong>7: What is my favourite animal?</strong></label>
+        <select id="question7" class="w3-input w3-padding-16 w3-border" name="question7" required>
+            <option value="">Please select an option</option>
+            <option value="owl">Owl</option>
+            <option value="panther">Panther</option>
+            <option value="falcon">Falcon</option>
+            <option value="cheetah">Cheetah</option>
+        </select>
+        {% if answer7 %}
+            <p>{{ answer7 }}</p>
+        {% endif %}
+        <br>
+
+        <label for="question8"><strong>8: Who is my favourite rapper?</strong></label>
+        <select id="question8" class="w3-input w3-padding-16 w3-border" name="question8" required>
+            <option value="">Please select an option</option>
+            <option value="carti">Playboi Carti</option>
+            <option value="jcole">J Cole</option>
+            <option value="kendrick">Kendrick Lamar</option>
+            <option value="drake">Drake</option>
+        </select>
+        {% if answer8 %}
+          <p>{{ answer8 }}</p>
+        {% endif %}
+        <br>
+
+        <label for="question9"><strong>9: What game would I choose to be in if I could be in a game?</strong></label>
+        <select id="question9" class="w3-input w3-padding-16 w3-border" name="question9" required>
+            <option value="">Please select an option</option>
+            <option value="animalcrossing">Animal Crossing</option>
+            <option value="streetfighter">Street Fighter</option>
+            <option value="pokemon">Pokemon</option>
+            <option value="zelda">Legends Of Zelda</option> 
+        </select>
+        {% if answer9 %}
+            <p>{{ answer9 }}</p>
+        {% endif %}
+        <br>
+
+        <label for="question10"><strong>10: What is my favourite movie?</strong></label>
+        <select id="question10" class="w3-input w3-padding-16 w3-border" name="question10" required>
+            <option value="">Please select an option</option>
+            <option value="spiderman nwh">Spide-Man: No Way Home</option>
+            <option value="spiderman btsv">Spider-Man: Beyond The Spider-Verse</option>
+            <option value="endgame">Avengers: Endgame</option>
+            <option value="batman">The Batman</option>
+        </select>
+        {% if answer10 %}
+            <p>{{ answer10 }}</p>
+        {% endif %}
+        <br>
         <button class="w3-button w3-light-grey w3-padding-large" type="submit">
-          <i class="fa fa-paper-plane"></i> SEND MESSAGE
+          <i class="fa fa-paper-plane"></i> COMPLETE QUIZ!
         </button>
       </p>
     </form>
@@ -216,13 +299,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   
   <!-- Footer -->
   <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin:-24px">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+    <p class="w3-medium">Created by <a href="https://github.com/pythonsean1" target="_blank" class="w3-hover-text-green">Sean Agyekum</a></p>
   <!-- End footer -->
   </footer>
   
